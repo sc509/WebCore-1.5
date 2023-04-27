@@ -89,12 +89,13 @@ body {
   .brands__list-wrapper {
     display: grid;
     width: auto;
-    height: 160px;
+    max-height: 160px;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 72px);
     gap: 16px 24px;
     margin: 24px;
     overflow: hidden;
+    transition: max-height 0.3s ease;
   }
 }
 
@@ -105,8 +106,15 @@ body {
     grid-template-rows: repeat(3, 72px);
     gap: 16px 32px;
     margin: 24px 32px;
-    height: 160px;
+    max-height: 160px;
   }
+}
+.brands__list-wrapper--ohs {
+  max-height: none;
+}
+
+.brands__list-wrapper--none {
+  max-height: 0;
 }
 
 .brands__list-item {
@@ -200,14 +208,22 @@ body {
 @media (min-width: 768px) {
   .show-all {
     display: block;
+    background: none;
+    border: none;
+    color: #0072c6;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: transform 0.3s ease;
   }
+
+  .show-all--rotate::before {
+		transform: rotate(180deg);
+	}
 }
 
 .show-all--position {
   margin-left: 32px;
-}
-.show-all--rotate::before {
-  transform: rotate(180deg);
 }
 
 .swiper-pagination {
