@@ -31,26 +31,33 @@ mobileSlider();
 
 
 const showAllButton = document.querySelector('.show-all');
-const arrow = document.querySelector('.show-all::before');
 const brandsList = document.querySelector('.brands__list-wrapper');
 const showAllText = showAllButton.textContent;
 
 showAllButton.addEventListener('click', () => {
   if (showAllButton.classList.contains('show-all--hide')) {
-    brandsList.style.overflow = 'hidden';
-    brandsList.style.height = '160px';
+    brandsList.classList.remove('brands__list-wrapper--ohs');
 
     showAllButton.textContent = showAllText;
     showAllButton.classList.remove('show-all--hide');
-		showAllButton.classList.remove("show-all--rotate");
+    showAllButton.classList.remove('show-all--rotate');
   } else {
-    brandsList.style.overflow = 'visible';
-    brandsList.style.height = 'auto';
+    brandsList.classList.add('brands__list-wrapper--ohs');
 
     showAllButton.textContent = 'Скрыть';
     showAllButton.classList.add('show-all--hide');
-		showAllButton.classList.add("show-all--rotate");
-
+    showAllButton.classList.add('show-all--rotate');
   }
 });
+
+const hideButton = document.querySelector('.hide-all');
+hideButton.addEventListener('click', () => {
+  brandsList.classList.remove('brands__list-wrapper--ohs');
+
+  showAllButton.textContent = showAllText;
+  showAllButton.classList.remove('show-all--hide');
+  showAllButton.classList.remove('show-all--rotate');
+});
+
+
 
